@@ -1,0 +1,2 @@
+ALTER TABLE login_tbl
+    ADD COLUMN role VARCHAR(50) NOT NULL;

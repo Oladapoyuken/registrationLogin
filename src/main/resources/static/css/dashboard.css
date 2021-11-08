@@ -1,0 +1,85 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding: 10px;
+}
+.info p {
+    text-align: center;
+    color: #999;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+.info i {
+    color: #55acee;
+}
+
+h1 {
+    text-align: center;
+    color: #666;
+    text-shadow: 1px 1px 0px #fff;
+    margin: 50px 0px 0px 0px;
+}
+img{
+    border-radius: 100%;
+}
+
+i{
+    margin-left: 5px;
+    color: white;
+    font-size: 30px;
+}
+
+#logout-div i{
+    float: right;
+}
+
+.button{
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+
+}
+
+#imageUpload{
+    display: none;
+}
+
+#uploadIcon{
+    border-radius: 100%;
+    height: fit-content;
+    width: fit-content;
+    padding: 0px;
+}
+#uploadIcon i{
+    font-size: 30px;
+    color: white;
+}
+
+.container {
+    background-image: url("../images/bg.jpg");
+    padding: 20px;
+
+
+}
+.content{
+    color: white;
+}
+
+#profileDp{
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0px;
+}
+
+#picture{
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+}
+.infoRow{
+    text-align: start;
+}
