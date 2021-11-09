@@ -27,7 +27,7 @@ public class JwtTokenProcessor {
 //        String refreshToken = buildToken(user, request, 60);
 
         Map<String, String> tokens = new HashMap<>();
-        tokens.put("access_token", accessToken);
+        tokens.put("message", accessToken);
 //        tokens.put("refresh_token", refreshToken);
 
         return tokens;

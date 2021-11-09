@@ -62,6 +62,7 @@ i{
 .container {
     background-image: url("../images/bg.jpg");
     padding: 20px;
+    width: 800px !important;
 
 
 }

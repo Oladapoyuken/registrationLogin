@@ -27,19 +27,18 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping(path = "/api")
-//@CrossOrigin(origins = "http://localhost:63342")
 public class UserController {
 
     private final UserService userService;
-    private final AuthenticationManager authenticationManager;
-    private final JwtTokenProcessor jwtTokenProcessor;
+//    private final AuthenticationManager authenticationManager;
+//    private final JwtTokenProcessor jwtTokenProcessor;
 
     @Autowired
-    public UserController(UserService userService, AuthenticationManager authenticationManager, JwtTokenProcessor jwtTokenProcessor) {
+    public UserController(UserService userService){//, AuthenticationManager authenticationManager, JwtTokenProcessor jwtTokenProcessor) {
 
         this.userService = userService;
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenProcessor = jwtTokenProcessor;
+//        this.authenticationManager = authenticationManager;
+//        this.jwtTokenProcessor = jwtTokenProcessor;
     }
 
     @PostMapping(value = "/register")
@@ -121,21 +120,21 @@ public class UserController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
     }
 
-    @PostMapping(value = "/login")
-    public ResponseEntity<Object> test(HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) throws Exception {
-        try{
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(username, password)
-            );
-        }catch (BadCredentialsException bce){
-            return ResponseEntity.ok(new Response("failure", "Sorry, invalid login credentials"));
-        }
-        final org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) userService.loadUserByUsername(username);
-
-        final var token = jwtTokenProcessor.encryptToken(user,request);
-
-        return ResponseEntity.ok(new Response("success", token.get("access_token")));
-    }
+//    @PostMapping(value = "/login")
+//    public ResponseEntity<Object> test(HttpServletRequest request, @RequestParam("username") String username, @RequestParam("password") String password) throws Exception {
+//        try{
+//            authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(username, password)
+//            );
+//        }catch (BadCredentialsException bce){
+//            return ResponseEntity.ok(new Response("failure", "Sorry, invalid login credentials"));
+//        }
+//        final org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) userService.loadUserByUsername(username);
+//
+//        final var token = jwtTokenProcessor.encryptToken(user,request);
+//
+//        return ResponseEntity.ok(new Response("success", token.get("access_token")));
+//    }
 
     @GetMapping(value = "forget")
     public ResponseEntity<Object> forget(@RequestParam("email") String email){

@@ -1,6 +1,6 @@
 package com.example.registerlogin.security;
 
-//import com.example.registerlogin.filter.CustomAuthenticationFilter;
+import com.example.registerlogin.filter.CustomAuthenticationFilter;
 import com.example.registerlogin.filter.CustomAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,17 +42,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        CustomAuthenticationFilter authenticationFilter = new CustomAuthenticationFilter(
-//                authenticationManagerBean(), jwtTokenProcessor
-//        );
-//        authenticationFilter.setFilterProcessesUrl("/api/login");
+        CustomAuthenticationFilter authenticationFilter = new CustomAuthenticationFilter(
+                authenticationManagerBean(), jwtTokenProcessor
+        );
+        authenticationFilter.setFilterProcessesUrl("/api/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().antMatchers("/api/register", "/api/login", "/api/forget", "/api/confirm", "/view/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
 //        http.httpBasic();
 
-//        http.addFilter(authenticationFilter);
+        http.addFilter(authenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(jwtTokenProcessor), UsernamePasswordAuthenticationFilter.class);
     }
 
