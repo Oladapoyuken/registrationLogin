@@ -37,13 +37,14 @@ public class MailService implements EmailDao {
     }
 
     @Override
-    public void sendMailWithAttachment(Mail mail) throws MessagingException {
+    public void sendMailWithAttachment(Mail mail, String filePath) throws MessagingException {
         MimeMessage msg = mailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(msg, true);
         messageHelper.setTo(mail.getRecipient());
         messageHelper.setSubject(mail.getSubject());
         messageHelper.setText(mail.getMessage());
-        FileSystemResource fileSystemResource = new FileSystemResource(new File(System.getProperty("user.dir") + "\\upload\\boy.jpg"));
+//        FileSystemResource fileSystemResource = new FileSystemResource(new File(System.getProperty("user.dir") + "\\upload\\boy.jpg"));
+        FileSystemResource fileSystemResource = new FileSystemResource(new File(filePath));
         messageHelper.addAttachment(fileSystemResource.getFilename(), fileSystemResource);
 
         mailSender.send(msg);

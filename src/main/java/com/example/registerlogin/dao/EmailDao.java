@@ -8,5 +8,5 @@ public interface EmailDao {
 
     void sendMail(Mail mail);
 
-    void sendMailWithAttachment(Mail mail) throws MessagingException;
+    void sendMailWithAttachment(Mail mail, String filePath) throws MessagingException;
 }
